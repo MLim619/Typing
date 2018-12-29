@@ -24,8 +24,23 @@ export class MoviesListComponent implements OnInit {
       });
   }
 
-  counter(i: number){
-    let arr = new Array(i)
+  getPageRange(currentPage:number, pageCount: number){
+    let numPages = 9;
+    let arr = new Array(numPages);
+    let start = 1;
+
+    if (currentPage > Math.floor(numPages/2)){
+      start = currentPage - Math.floor(numPages/2);
+    }
+
+    if (currentPage >= (pageCount - Math.floor(numPages/2))){
+      start = (pageCount - numPages) + 1;
+    }
+    
+    for(let i=0; i<arr.length; i++){
+      arr[i] = start + i;
+    }
+    
     return arr;
   }
 
