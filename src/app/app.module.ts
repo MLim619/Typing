@@ -1,3 +1,4 @@
+import { MoviesService } from './services/movies-list.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +15,7 @@ import { MoviesListComponent } from './movies-list/movies-list.component';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <div *ngIf="moviesList">
-  <select (change)="getMovies($event.target.value)">
+  <select (change)="getMoviesList($event.target.value)">
     <option *ngFor="let in of counter(moviesList.total_pages); let i=index">{{i + 1}}</option>
   </select>
 
