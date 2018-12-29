@@ -1,6 +1,7 @@
 import { MoviesService } from '../services/movies-list.service';
 import { MoviesList } from './../models/movie-list';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
@@ -10,15 +11,22 @@ import { Component, OnInit } from '@angular/core';
 export class MoviesListComponent implements OnInit {
 
   moviesList: MoviesList;
+  sort: string; 
 
-  constructor(private service: MoviesService) { }
+  constructor(private service: MoviesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getMoviesList();
+    this.route.params
+      .subscribe(
+        params => {
+          this.sort = params['sort'];
+          this.getMoviesList(this.sort);
+        }
+      );
   }
-
-  getMoviesList(page?: string){
-    this.service.getMoviesList(page).subscribe(
+  
+  getMoviesList(sort: string, page?: string){
+    this.service.getMoviesList(sort, page).subscribe(
       res =>{
         this.moviesList = res as MoviesList;
       });
