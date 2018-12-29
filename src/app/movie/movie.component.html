@@ -1,0 +1,21 @@
+<div class="cmp" *ngIf="movie">
+  <div class="bg"
+    [ngStyle]="{'background-image': 'url(http://image.tmdb.org/t/p/original/' + movie.backdrop_path + ')'}">
+    <div class="container">
+      <p>Title: {{movie.title}}</p>
+      <p>Budget: {{movie.budget | currency:'USD':true:'1.0'}}</p> 
+      <p>Homepage: <a href="{{movie.homepage}}">{{movie.homepage}}</a></p>
+      <p>Runtime: {{movie.runtime}} minutes</p>
+      <p>Revenue: {{movie.revenue | currency:'USD':true:'1.0'}}</p>
+
+      <div class="typing-area">
+        <span 
+          *ngFor="let char of movie.typing_array; index as i"
+          class="letter"
+          [ngClass]="{'active': i===0}"
+          >{{char}}</span>
+      </div>
+
+    </div>
+  </div>
+</div>

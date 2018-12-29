@@ -1,43 +1,45 @@
 <div *ngIf="moviesList">
-  <div class="row">
-    <div 
-      *ngFor="let movie of moviesList.results"
-      class="col-sm-3 col-md-2">
-      <div class="thumbnail">
-         <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}"
-          onerror="this.src='../../assets/images/placeholder-movieimage.png'"
-          alt="{{movie.title}}">
-        <div class="caption">
-          <strong>{{movie.title}}</strong>
-          <p><span class="glyphicon glyphicon-thumbs-up"></span> {{movie.vote_count}}</p>
-          <p><span class="glyphicon glyphicon-star"></span> {{movie.vote_average}}/10</p>
-
-        </div>
+  <div class="container">
+    <div class="row">
+      <div 
+        *ngFor="let movie of moviesList.results"
+        class="col-sm-3 col-md-2">
+        <a routerLink="/movie/{{movie.id}}">
+          <div class="thumbnail">
+            <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}"
+              onerror="this.src='../../assets/images/placeholder-movieimage.png'"
+              alt="{{movie.title}}">
+            <div class="caption">
+              <strong>{{movie.title}}</strong>
+              <p><span class="glyphicon glyphicon-thumbs-up"></span> {{movie.vote_count}}</p>
+              <p><span class="glyphicon glyphicon-star"></span> {{movie.vote_average}}/10</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
   
-  <nav aria-label="Page navigation">
-    <div class="text-center">
-      <ul class="pagination">
-        <li [ngClass]="{'disabled': moviesList.page === 1}">
-          <a class="hover" (click)="getMoviesList(sort, 1)">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li [ngClass]="{'active': i===moviesList.page}" 
-          *ngFor="let i of getPageRange(moviesList.page, moviesList.total_pages)">
-          <a class="hover" (click)="getMoviesList(sort, i)">
-              {{i}}
-          </a>
-        </li>
-        <li [ngClass]="{'disabled': moviesList.page === moviesList.total_pages}">
-          <a class="hover" (click)="getMoviesList(sort, moviesList.total_pages)">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
+    <nav aria-label="Page navigation">
+      <div class="text-center">
+        <ul class="pagination">
+          <li [ngClass]="{'disabled': moviesList.page === 1}">
+            <a class="hover" (click)="getMoviesList(sort, 1)">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li [ngClass]="{'active': i===moviesList.page}" 
+            *ngFor="let i of getPageRange(moviesList.page, moviesList.total_pages)">
+            <a class="hover" (click)="getMoviesList(sort, i)">
+                {{i}}
+            </a>
+          </li>
+          <li [ngClass]="{'disabled': moviesList.page === moviesList.total_pages}">
+            <a class="hover" (click)="getMoviesList(sort, moviesList.total_pages)">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </div>

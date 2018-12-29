@@ -1,5 +1,5 @@
-import { MoviesService } from '../services/movies-list.service';
-import { MoviesList } from './../models/movie-list';
+import { MoviesListService } from '../services/movies-list.service';
+import { MoviesList } from '../models/movies-list';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class MoviesListComponent implements OnInit {
   moviesList: MoviesList;
   sort: string; 
 
-  constructor(private service: MoviesService, private route: ActivatedRoute) { }
+  constructor(private service: MoviesListService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
