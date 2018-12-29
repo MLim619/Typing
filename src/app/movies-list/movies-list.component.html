@@ -1,0 +1,10 @@
+<div *ngIf="moviesList">
+  <select (change)="getMovies($event.target.value)">
+    <option *ngFor="let in of counter(moviesList.total_pages); let i=index">{{i + 1}}</option>
+  </select>
+
+  <div *ngFor="let movie of moviesList.results">
+    <p>{{movie.title}}</p>
+    <img src="http://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+  </div>
+</div>
