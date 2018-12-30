@@ -11,10 +11,15 @@
     background: rgb(255, 255, 255, .8);
 }
 .letter{
+    border-radius: 2px;
     font-family: "Lucida Console", Monaco, monospace;
     font-size: 20px;
     padding: 2px;
+    margin: 2px;
 }
-.active{
+.letter-active{
     border-bottom: 2px solid blue;
+}
+.letter-error{
+    background-color:#d65555;
 }

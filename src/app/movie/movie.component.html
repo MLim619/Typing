@@ -3,16 +3,17 @@
     [ngStyle]="{'background-image': 'url(http://image.tmdb.org/t/p/original/' + movie.backdrop_path + ')'}">
     <div class="container">
       <p>Title: {{movie.title}}</p>
-      <p>Budget: {{movie.budget | currency:'USD':true:'1.0'}}</p> 
+      <p>Budget: {{movie.budget | currency:'USD':'symbol':'1.0'}}</p> 
       <p>Homepage: <a href="{{movie.homepage}}">{{movie.homepage}}</a></p>
       <p>Runtime: {{movie.runtime}} minutes</p>
-      <p>Revenue: {{movie.revenue | currency:'USD':true:'1.0'}}</p>
+      <p appHighlight>Revenue: {{movie.revenue | currency:'USD':'symbol':'1.0'}}</p>
 
       <div class="typing-area">
-        <span 
+        <span
           *ngFor="let char of movie.typing_array; index as i"
+          [attr.value]="char"
           class="letter"
-          [ngClass]="{'active': i===0}"
+          [ngClass]="{'letter-active': i===0}"
           >{{char}}</span>
       </div>
 
