@@ -9,6 +9,13 @@
     border-radius: 15px;
     padding: 10px 20px 10px 20px;
     background: rgb(255, 255, 255, .8);
+    margin: 10px 0px 10px 0px;
+}
+.panel{
+    border-radius: 15px;
+    padding: 0px 10px 0px 10px;
+    background: rgb(255, 255, 255, .8);
+    margin: 10px 0px 10px 0px; 
 }
 .letter{
     border-radius: 2px;

@@ -2,13 +2,9 @@
   <div class="bg"
     [ngStyle]="{'background-image': 'url(http://image.tmdb.org/t/p/original/' + movie.backdrop_path + ')'}">
     <div class="container">
-      <p>Title: {{movie.title}}</p>
-      <p>Budget: {{movie.budget | currency:'USD':'symbol':'1.0'}}</p> 
-      <p>Homepage: <a href="{{movie.homepage}}">{{movie.homepage}}</a></p>
-      <p>Runtime: {{movie.runtime}} minutes</p>
-      <p appHighlight>Revenue: {{movie.revenue | currency:'USD':'symbol':'1.0'}}</p>
-
+      
       <div class="typing-area">
+        <h1>{{movie.title}}</h1>
         <span
           *ngFor="let char of movie.typing_array; index as i"
           [attr.value]="char"
@@ -17,6 +13,34 @@
           >{{char}}</span>
       </div>
 
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h1>Movie Details</h1>
+          <dl class="dl-horizontal">
+            <div *ngIf="movie.title">
+              <dt>Title:</dt>
+              <dd>{{movie.title}}</dd>
+            </div>
+            <div *ngIf="movie.budget">
+              <dt>Budget:</dt>
+              <dd>{{movie.budget | currency:'USD':'symbol':'1.0'}}</dd>
+            </div>
+            <div *ngIf="movie.homepage">
+              <dt>Homepage:</dt>
+              <dd><a href="{{movie.homepage}}"> {{movie.homepage}}</a></dd>
+            </div>
+            <div *ngIf="movie.runtime">
+              <dt>Runtime:</dt>
+              <dd>{{movie.runtime}} minutes</dd>
+            </div>
+            <div *ngIf="movie.revenue">
+              <dt>Revenue:</dt>
+              <dd>{{movie.revenue | currency:'USD':'symbol':'1.0'}}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>
